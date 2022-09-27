@@ -1,0 +1,12 @@
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\pub.exe
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\pub.dll
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\pub.deps.json
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\pub.runtimeconfig.json
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\pub.pdb
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\Dapr.Client.dll
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\Google.Api.CommonProtos.dll
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\Google.Protobuf.dll
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\Grpc.Core.Api.dll
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\Grpc.Net.Client.dll
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\Grpc.Net.Common.dll
+C:\Users\jonises.azucena\Desktop\Azure\dapr\workingwithazure\configure\configure\bin\Debug\net6.0\publish\Microsoft.Extensions.Logging.Abstractions.dll

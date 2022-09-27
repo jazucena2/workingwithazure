@@ -1,0 +1,13 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: azureconfig
+spec:
+  type: configuration.redis #lock.redis
+  metadata:
+  - name: redisHost
+    value: daprlock.redis.cache.windows.net:6380 #daprlock.redis.cache.windows.net:6380,password=FcrItLj8Clkoyr4cLXioaphyIBtjlWLosAzCaAskUL4=,ssl=True,abortConnect=False #daprlock.redis.cache.windows.net:6380 #rothiedaprcache.redis.cache.windows.net:6380
+  - name: redisPassword
+    value: FcrItLj8Clkoyr4cLXioaphyIBtjlWLosAzCaAskUL4= #xxxxxxxxxxxxxx
+  - name: enableTLS   # <-- This is the important part missing in the docs
+    value: "true"
