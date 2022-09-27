@@ -1,0 +1,315 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/lock/lock/pub.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "daprd-debug-lock",
+            "appId": "lockdp",
+            "appPort": 5020,
+            "httpPort": 3500,
+            "grpcPort": 50000,
+            "metricsPort": 9090,
+            "type": "daprd",
+            "dependsOn": "lock",
+            "componentsPath": "./lock/component",
+            "presentation": {
+              "showReuseMessage": false,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "daprd-down-lock",
+            "appId": "lockdp",
+            "type": "daprd-down",
+            "presentation": {
+              "showReuseMessage": false,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "daprd-debug-store",
+            "appId": "order-processor",
+            "appPort": 5000,   
+            "httpPort": 3500,
+            "grpcPort": 50000,
+            "metricsPort": 9090,              
+            "type": "daprd",
+            "dependsOn": "store",
+            "componentsPath": "./state_management/components",
+            "presentation": {
+              "showReuseMessage": true,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "daprd-down-store",
+            "appId": "order-processor",
+            "type": "daprd-down",
+            "presentation": {
+              "showReuseMessage": false,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "store",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/bindings/csharp/sdk/order-processor/Program.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "daprd-debug-bindings",
+            "appId": "batch",
+            "appPort": 5000,   
+            "httpPort": 3500,
+            "grpcPort": 50000,
+            "metricsPort": 9090,              
+            "type": "daprd",
+            "dependsOn": "bindings",
+            "componentsPath": "./bindings/components",
+            "presentation": {
+              "showReuseMessage": true,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "daprd-down-bindings",
+            "appId": "batch",
+            "type": "daprd-down",
+            "presentation": {
+              "showReuseMessage": false,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "bindings",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/bindings/csharp/sdk/batch/batch.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "daprd-debug-publish",
+            "appId": "pub",
+            "appPort": 5000,   
+            "httpPort": 3500,
+            "grpcPort": 50000,
+            "metricsPort": 9090,              
+            "type": "daprd",
+            "dependsOn": "publishdapr",
+            "componentsPath": "./pub/component",
+            "presentation": {
+              "showReuseMessage": true,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "daprd-down-publish",
+            "appId": "pub",
+            "type": "daprd-down",
+            "presentation": {
+              "showReuseMessage": false,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "publishdapr",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/pub/pub.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "daprd-debug-secret",
+            "appId": "order-processor",
+            "appPort": 5200,                             
+            "type": "daprd",
+            "dependsOn": "secretdapr",
+            "componentsPath": "./secrets_management/components",
+            "presentation": {
+              "showReuseMessage": true,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "daprd-down-secret",
+            "appId": "order-processor",
+            "type": "daprd-down",
+            "presentation": {
+              "showReuseMessage": false,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "secretdapr",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/secrets_management/csharp/http/order-processor/Program.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "daprd-debug-config",
+            "appId": "configure",
+            "appPort": 5200,         
+            "httpPort": 3500,
+            "grpcPort": 50000,
+            "metricsPort": 9090,                     
+            "type": "daprd",
+            "dependsOn": "configdapr",
+            "componentsPath": "./configure/component",
+            "presentation": {
+              "showReuseMessage": true,
+              "clear": true,
+              "close": true
+              
+            }
+        },
+        {
+            "label": "daprd-down-config",
+            "appId": "configure",
+            "type": "daprd-down",
+            "presentation": {
+              "showReuseMessage": false,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "configdapr",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/configure/configure/pub.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "lock",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/lock/lock/pub.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/lock/lock/pub.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: debug",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "build1:dev",
+                "target": "base",
+                "dockerfile": "${workspaceFolder}/lock/lock/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/lock/lock/pub.csproj"
+            }
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: release",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "build1:latest",
+                "dockerfile": "${workspaceFolder}/lock/lock/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/lock/lock/pub.csproj"
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: debug",
+            "dependsOn": [
+                "docker-build: debug"
+            ],
+            "dockerRun": {
+                "os": "Windows"
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/lock/lock/pub.csproj",
+                "enableDebugging": true
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: release",
+            "dependsOn": [
+                "docker-build: release"
+            ],
+            "dockerRun": {
+                "os": "Windows"
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/lock/lock/pub.csproj"
+            }
+        }
+    ]
+}
