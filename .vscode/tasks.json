@@ -71,7 +71,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/bindings/csharp/sdk/order-processor/Program.csproj",
+                "${workspaceFolder}/state_management/csharp/http/order-processor/Program.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -117,14 +117,14 @@
         },
         {
             "label": "daprd-debug-publish",
-            "appId": "pub",
+            "appId": "checkout",
             "appPort": 5000,   
             "httpPort": 3500,
             "grpcPort": 50000,
             "metricsPort": 9090,              
             "type": "daprd",
             "dependsOn": "publishdapr",
-            "componentsPath": "./pub/component",
+            "componentsPath": "./pub_sub/components",
             "presentation": {
               "showReuseMessage": true,
               "clear": true,
@@ -133,7 +133,7 @@
         },
         {
             "label": "daprd-down-publish",
-            "appId": "pub",
+            "appId": "checkout",
             "type": "daprd-down",
             "presentation": {
               "showReuseMessage": false,
@@ -147,7 +147,45 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/pub/pub.csproj",
+                "${workspaceFolder}/pub_sub/csharp/http/checkout/checkout.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "daprd-debug-subscribe",
+            "appId": "order-processor",
+            "appPort": 5000,   
+            "httpPort": 3500,
+            "grpcPort": 50000,
+            "metricsPort": 9090,              
+            "type": "daprd",
+            "dependsOn": "subscribedapr",
+            "componentsPath": "./pub_sub/components",
+            "presentation": {
+              "showReuseMessage": true,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "daprd-down-subscribe",
+            "appId": "order-processor",
+            "type": "daprd-down",
+            "presentation": {
+              "showReuseMessage": false,
+              "clear": true,
+              "close": true
+            }
+        },
+        {
+            "label": "subscribedapr",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/pub_sub/csharp/sdk/order-processor/order-processor.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

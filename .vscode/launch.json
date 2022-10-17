@@ -1,0 +1,164 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/lock/lock/bin/Debug/net6.0/pub.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/lock/lock",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Launch with Dapr - Lock",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "daprd-debug-lock",
+            "program": "${workspaceFolder}/lock/lock/bin/Debug/net6.0/pub.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/lock/lock",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "postDebugTask": "daprd-down-lock",
+            "trace": true,
+            "env": {
+              "DAPR_HTTP_PORT": "3500",
+              "DAPR_GRPC_PORT": "50000",
+              "ASPNETCORE_URLS": "http://+:5020",
+              "APP_PORT": "5020"
+            }
+          },  
+          {
+            "name": "Launch with Dapr - StateStore",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "daprd-debug-store",
+            "program": "${workspaceFolder}/state_management/csharp/http/order-processor/bin/Debug/net6.0/Program.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/state_management/csharp/http/order-processor",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "postDebugTask": "daprd-down-store",
+            "trace": true,
+            "env": {
+              "DAPR_HTTP_PORT": "3500",
+              "DAPR_GRPC_PORT": "50000",
+              "ASPNETCORE_URLS": "http://+:5020",
+              "APP_PORT": "5020"
+            }
+          },         
+          {
+            "name": "Launch with Dapr - Bindings",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "daprd-debug-bindings",
+            "program": "${workspaceFolder}/bindings/csharp/sdk/batch/bin/Debug/net6.0/batch.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/bindings/csharp/sdk/batch",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "postDebugTask": "daprd-down-bindings",
+            "trace": true,
+            "env": {
+              "DAPR_HTTP_PORT": "3500",
+              "DAPR_GRPC_PORT": "50000",
+              "ASPNETCORE_URLS": "http://+:5020",
+              "APP_PORT": "5020"
+            }
+          },
+          {
+            "name": "Launch with Dapr - Publish",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "daprd-debug-publish",
+            "program": "${workspaceFolder}/pub_sub/csharp/http/checkout/bin/Debug/net6.0/checkout.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/pub_sub/csharp/http/checkout",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "postDebugTask": "daprd-down-publish",
+            "trace": true,
+            "env": {
+              "DAPR_HTTP_PORT": "3500",
+              "DAPR_GRPC_PORT": "50000",
+              "ASPNETCORE_URLS": "http://+:5020",
+              "APP_PORT": "5020"
+            }
+          },    
+          {
+            "name": "Launch with Dapr - Subscribe",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "daprd-debug-subscribe",
+            "program": "${workspaceFolder}/pub_sub/csharp/http/order-processor/bin/Debug/net6.0/order-processor.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/pub_sub/csharp/http/order-processor",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "postDebugTask": "daprd-down-subscribe",
+            "trace": true,
+            "env": {
+              "DAPR_HTTP_PORT": "3500",
+              "DAPR_GRPC_PORT": "50000",
+              //"ASPNETCORE_URLS": "http://+:5020",
+              "APP_PORT": "5020"
+            }
+          }, 
+          {
+            "name": "Launch with Dapr - Secrets",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "daprd-debug-secret",
+            "program": "${workspaceFolder}/secrets_management/csharp/http/order-processor/bin/Debug/net6.0/Program.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/secrets_management/csharp/http/order-processor",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "postDebugTask": "daprd-down-secret",
+            "trace": true,
+            "env": {
+              "DAPR_HTTP_PORT": "3500",
+              "DAPR_GRPC_PORT": "50000",
+              "ASPNETCORE_URLS": "http://+:5020",
+              "APP_PORT": "5020"
+            }
+          },                
+          {
+            "name": "Launch with Dapr - Configure",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "daprd-debug-config",
+            "program": "${workspaceFolder}/configure/configure/bin/Debug/net6.0/pub.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/configure/configure",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "postDebugTask": "daprd-down-config",
+            "trace": true,
+            "env": {
+              "DAPR_HTTP_PORT": "3500",
+              "DAPR_GRPC_PORT": "50000",
+              "ASPNETCORE_URLS": "http://+:5020",
+              "APP_PORT": "5020"
+            }
+          },                        
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        },
+        {
+            "name": "Docker .NET Core Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "netCore": {
+                "appProject": "${workspaceFolder}/lock/lock/pub.csproj"
+            }
+        }
+    ]
+}
